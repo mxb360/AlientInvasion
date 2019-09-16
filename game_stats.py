@@ -11,7 +11,8 @@ class GameStats(object):
         self.hit_count = 0
         self.lost_count = 0
         self.game_over = False
-
+        self.is_pause = False
+        
         self.reset()
 
     def reset(self):

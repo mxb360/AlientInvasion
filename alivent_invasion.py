@@ -14,7 +14,7 @@ def run_game():
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
-    pygame.display.set_caption('外星人入侵')
+    pygame.display.set_caption('飞机大战')
 
     play_button = Button(screen, "Start Game")
     sound = Sound(ai_settings)
@@ -36,10 +36,11 @@ def run_game():
     # 开始游戏主循环
     while True:
         gf.check_events(ai_settings, screen, ship, bullets, alients, ALIENT_EVENT, play_button, sb, sound)
-        ship.update(sound)
-        gf.update_alients(screen, ship, alients, ai_settings, explosions, sb)
-        gf.update_bullets(screen, ai_settings, alients, bullets, explosions, sb)
-        gf.update_explosions(explosions)
-        gf.update_screen(ship, bg, bullets, alients, explosions, play_button, sb)
+        if not ship.stats.is_pause:
+            ship.update(sound)
+            gf.update_alients(screen, ship, alients, ai_settings, explosions, sb)
+            gf.update_bullets(screen, ai_settings, alients, bullets, explosions, sb)
+            gf.update_explosions(explosions)
+            gf.update_screen(ship, bg, bullets, alients, explosions, play_button, sb)
 
 run_game()

@@ -24,8 +24,8 @@ def check_keydown_events(ai_settings, screen, event, ship, bullets, sound):
         sound.play_fire()
         fire_bullet(ai_settings, screen, ship, bullets)
         pygame.time.set_timer(pygame.USEREVENT + 2, 100)
-
-
+    elif event.key == pygame.K_p:
+        ship.stats.is_pause = not ship.stats.is_pause
 
 def check_keyup_events(event, ship):
     """ 响应按键松开 """
